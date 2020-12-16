@@ -3,6 +3,7 @@ package me.hellozin.about.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Article {
@@ -11,15 +12,16 @@ public class Article {
     @GeneratedValue
     private long id;
 
-    private long authorId;
+    @ManyToOne
+    private Author author;
 
     private String content;
 
     protected Article() {
     }
 
-    public Article(long authorId, String content) {
-        this.authorId = authorId;
+    public Article(Author author, String content) {
+        this.author = author;
         this.content = content;
     }
 
@@ -27,8 +29,8 @@ public class Article {
         return id;
     }
 
-    public long getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
     }
 
     public String getContent() {
