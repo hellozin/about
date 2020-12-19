@@ -24,6 +24,8 @@ public class AuthorController {
 
     @PostMapping("/author")
     public Author signUp(SignUpRequest signUpRequest) {
-        return authorService.signUp(signUpRequest);
+        final String authorName = signUpRequest.getName();
+
+        return authorService.signUp(authorName);
     }
 }

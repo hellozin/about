@@ -1,6 +1,6 @@
 package me.hellozin.about.request;
 
-public class ArticlePublishRequest {
+public class PublishArticleRequest {
 
     private long authorId;
 

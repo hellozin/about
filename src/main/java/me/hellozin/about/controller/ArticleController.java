@@ -2,7 +2,7 @@ package me.hellozin.about.controller;
 
 import java.util.List;
 import me.hellozin.about.entity.Article;
-import me.hellozin.about.request.ArticlePublishRequest;
+import me.hellozin.about.request.PublishArticleRequest;
 import me.hellozin.about.service.ArticleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +18,11 @@ public class ArticleController {
     }
 
     @PostMapping("/article")
-    public Article publishArticle(ArticlePublishRequest article) {
-        return articleService.publish(article);
+    public Article publishArticle(PublishArticleRequest publishArticleRequest) {
+        long authorId = publishArticleRequest.getAuthorId();
+        String content = publishArticleRequest.getContent();
+
+        return articleService.publish(authorId, content);
     }
 
     @GetMapping("/article/list")
